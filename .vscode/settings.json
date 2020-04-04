@@ -1,0 +1,9 @@
+{
+  "editor.tabSize": 2,
+  "editor.renderControlCharacters": true,
+  "files.insertFinalNewline": true,
+  "files.eol": "\n",
+  "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
+  "go.gopath": "/Users/igarashishou/go",
+  "go.goroot":"/Users/igarashishou/.anyenv/envs/goenv/versions/1.14.1"
+}
