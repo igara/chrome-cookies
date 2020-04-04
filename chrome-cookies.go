@@ -7,6 +7,7 @@ import (
 	"crypto/sha1"
 	"database/sql"
 	"encoding/json"
+	"flag"
 	"fmt"
 	"log"
 	"os"
@@ -96,9 +97,8 @@ func aesStripPadding(data []byte) ([]byte, error) {
 }
 
 func main() {
-	// var domain = flag.String("d", "", "-d domain")
-	var domain = "twitter.com"
-	// flag.Parse()
+	var domain = flag.String("d", "", "-d domain")
+	flag.Parse()
 	home, _ := os.UserHomeDir()
 	DbConnection, _ := sql.Open("sqlite3", home+"/Library/Application Support/Google/Chrome/Default/Cookies")
 
@@ -120,7 +120,7 @@ func main() {
 			samesite,
 			source_scheme
 		FROM cookies
-		WHERE host_key like '%` + domain + `' ORDER BY LENGTH(path) DESC, creation_utc ASC`
+		WHERE host_key like '%` + *domain + `' ORDER BY LENGTH(path) DESC, creation_utc ASC`
 
 	rows, _ := DbConnection.Query(q)
 
